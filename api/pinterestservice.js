@@ -1,5 +1,3 @@
-
-
 // Access the secured API key from the environment variables
 const PINTEREST_API_KEY = process.env.PINTEREST_API_KEY; 
 

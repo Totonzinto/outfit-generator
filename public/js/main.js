@@ -21,7 +21,6 @@ document.querySelectorAll(".filters button").forEach(btn => {
 qs("#search-input").addEventListener("keyup", (e) => {
     if(e.key === "Enter") {
         const query = e.target.value.toLowerCase();
-        // In a real app, you would pass this to the API search method
         alert(`Searching Pinterest for: ${query}`);
     }
 });

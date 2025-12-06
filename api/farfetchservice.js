@@ -1,5 +1,3 @@
-
-
 // Access the secured API key from the environment variables
 const FARFETCH_API_KEY = process.env.FARFETCH_API_KEY; 
 
