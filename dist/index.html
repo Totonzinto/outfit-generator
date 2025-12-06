@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit Generator & Price Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-D2YIkFDa.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CMw4z0Ts.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <span class="icon">👔</span> OutfitGen
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#favorites">Favorites</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="controls">
+            <input type="text" id="search-input" placeholder="Search style (e.g. Summer Fit)...">
+            <div class="filters">
+                <button data-filter="summer">Summer</button>
+                <button data-filter="winter">Winter</button>
+                <button data-filter="vintage">Vintage</button>
+                <button data-filter="streetwear">Streetwear</button>
+            </div>
+        </section>
+
+        <section id="outfit-grid" class="grid-container">
+            </section>
+        
+        <div id="product-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2 id="modal-title">Outfit Breakdown</h2>
+                <div id="modal-items"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Outfit Generator | Powered by Pinterest & Farfetch APIs</p>
+    </footer>
+
+</body>
+</html>

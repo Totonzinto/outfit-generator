@@ -14,6 +14,8 @@ app.use(express.json());
 app.get('/api/search-outfits', async (req, res) => {
     
     const query = req.query.q || 'trending fashion'; 
+
+     console.log(`Node Server received search query: ${req.query.q}`);
     
     // Call the secure Pinterest service
     const results = await searchPinterest(query);
@@ -21,13 +23,6 @@ app.get('/api/search-outfits', async (req, res) => {
     res.json({ success: true, data: results });
 });
     
-    console.log(`Node Server received search query: ${req.query.q}`);
-    
-  
-    res.json({ success: true, data: [
-      
-        { id: 101, name: "Server Styled Look", image: "https://images.unsplash.com/photo-1545959734-72b22d373bd6?w=400", category: "summer" },
-    ]});
 
 // 2. Breakdown/Price Check Endpoint (Farfetch)
 app.get('/api/get-prices/:itemName', async (req, res) => {
