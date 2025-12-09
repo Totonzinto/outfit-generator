@@ -3,7 +3,7 @@
     --secondary: #F7C948;    
     --accent: #FF6B6B;       
     --background: #F5F5F5;   
-    --text: #1E1E1E;         
+    --text: #1E1E1E;        
     --font-head: 'Montserrat', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
@@ -18,32 +18,44 @@ body {
 
 /* Header */
 header {
-    background-color: var(--primary);
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    
 }
+
+nav.main-nav{
+    color: #333;
+}
+
+.nav-container {display: flex; justify-content: space-between;  align-items: center; max-width: 1200px;  margin: 0 auto; height: 60px;
+    background-color: #f4f2f2; color: white; padding: 1rem; margin-top: 2rem; }
+
+.logo a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.main-nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
+
+.main-nav li a {text-decoration: none; color: #555;padding: 10px 15px; display: block; transition: color 0.3s;}
+
+.main-nav li a:hover {
+    color: #007bff; 
+}
+
+/* Hide mobile toggle on desktop */
+.mobile-nav-toggle {
+    display: none;
+}
+
 header .logo { font-family: var(--font-head); font-size: 1.5rem; font-weight: bold; }
 header nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 600; }
 
 
-.controls {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
+.controls {padding: 2rem;display: flex;flex-direction: column;align-items: center;gap: 1rem;}
 
-#search-input {
-    padding: 10px;
-    width: 100%;
-    max-width: 400px;
-    border: 2px solid #ddd;
-    border-radius: 20px;
-}
+#search-input {padding: 10px;width: 100%;max-width: 400px;border: 2px solid #ddd;border-radius: 20px;}
 
 .filters { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .filters button {
@@ -60,8 +72,8 @@ header nav a { color: white; text-decoration: none; margin-left: 20px; font-weig
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
     padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -70,9 +82,9 @@ header nav a { color: white; text-decoration: none; margin-left: 20px; font-weig
 /* Circular Cards */
 .outfit-card {
     background: white;
-    border-radius: 50%;
-    width: 250px;
-    height: 250px;
+    border-radius: 50%; 
+    width: 200px;
+    height: 200px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
@@ -104,3 +116,179 @@ header nav a { color: white; text-decoration: none; margin-left: 20px; font-weig
 .price { color: var(--accent); font-weight: bold; }
 
 footer { background-color: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+
+/* Style for the main container on favorites.html */
+#favorites-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  gap: 20px; padding: 20px;}
+/* Style for the individual card container */
+.favorite-card {border: 1px solid #ddd;border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);display: flex;flex-direction: column;}
+
+/* FIX: Control the image size within the card */
+.favorite-card img {  width: 100%;   height: 300px;   object-fit: cover;  border-bottom: 1px solid #ddd;}
+
+/* Style the text and button area */
+.favorite-card h3 { padding: 10px;margin: 0; font-size: 1.2em;}
+.favorite-card .remove-btn {
+    margin: 10px;
+    padding: 8px;
+    background-color: #e74c3c; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.favorite-card .remove-btn:hover { background-color: #c0392b;}
+
+.logo-img { height: 40px;  width: auto;vertical-align: middle;}
+/* Make filter buttons use the primary color on active/hover */
+.filters button:hover { 
+    background-color: var(--secondary); 
+    color: var(--text); 
+}
+
+/* Add an active state for filter buttons */
+.filters button.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Highlight the active navigation link */
+.main-nav li a.active {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+#comparison-section { padding: 20px;max-width: 1200px;margin: 20px auto;background-color: #fff;border-radius: 8px;box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);}
+
+#comparison-table table {width: 100%;border-collapse: collapse; table-layout: fixed; }
+
+/* the table header */
+#comparison-table th {background-color: var(--primary);  color: white;padding: 12px 15px;text-align: left;font-weight: 600;}
+
+/* Style table rows */
+#comparison-table td { border-bottom: 1px solid #eee; padding: 15px; vertical-align: top; }
+
+
+#comparison-table tbody tr:nth-child(even) {  background-color: #f9f9f9;}
+
+
+#comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+/* Style for cells containing price and retailer info */
+.price-cell {display: flex; flex-direction: column; align-items: flex-start;}
+
+/* Style for the price text */
+.price-cell .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent);
+    margin-top: 5px;
+}
+
+/* Style for the retailer name */
+.price-cell .retailer-name {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 2px;
+}
+
+/* --- MOBILE NAVIGATION --- */
+
+/* 1. Hamburger Icon Setup */
+.mobile-nav-toggle {
+    display: none; 
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; 
+}
+
+/* The middle line of the hamburger */
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333; 
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+/* The top and bottom lines */
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #333;
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s, top 0.3s;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+/* 2. Media Query: Only show mobile styles on small screens */
+@media (max-width: 768px) {
+    /* Show the toggle button on mobile */
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    /* the Navigation Menu for Mobile */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%; /* Cover 70% of the screen width */
+        height: 100vh;
+        background-color: white;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+        transform: translateX(100%); /* Start hidden (off-screen right) */
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+        padding-top: 80px; 
+    }
+    .main-nav ul {
+        flex-direction: column; 
+        align-items: center;
+        width: 100%;
+    }
+    .main-nav li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav li a {
+        padding: 20px;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 1.2em;
+        display: block;
+    }
+    
+    /* Class added by JS to show the menu */
+    .main-nav.is-open {
+        transform: translateX(0); 
+    }
+}
+
+@media (max-width: 600px) {
+    #comparison-section {
+        padding: 10px;
+        margin: 10px auto;
+    }
+    
+    #comparison-table th,
+    #comparison-table td {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    
+    /* Make the retailer name very small on mobile to save space */
+    .price-cell .retailer-name {
+        font-size: 0.75em;
+    }
+}

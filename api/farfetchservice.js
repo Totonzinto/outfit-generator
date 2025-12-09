@@ -5,7 +5,7 @@ const FARFETCH_BASE_URL = 'https://api.farfetch.com/v1/search';
 
 /**
  * Searches Farfetch for a product or a similar item and retrieves price/seller info.
- * @param {string} itemName - The specific clothing item name (e.g., "white cropped top").
+ * @param {string} itemName 
  * @returns {Array} An array of product objects with price, seller, and link.
  */
 async function checkPriceFarfetch(itemName) {

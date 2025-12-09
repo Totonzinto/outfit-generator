@@ -4,20 +4,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Outfit Generator & Price Checker</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
       <script src="js/main.js" type="module"></script>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <span class="icon">👔</span> OutfitGen
-        </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#favorites">Favorites</a>
-        </nav>
-    </header>
+       <div class="nav-container">
+    <div class="logo">
+    <a href="index.html">
+        <img src="images/logo.png" alt="OutfitGen" class="logo-img"> 
+        </a>
+</div>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="favorites.html">My Favorites</a></li>
+        </ul>
+    </nav>
+    
+    <button class="mobile-nav-toggle" aria-controls="main-nav" aria-expanded="false">
+        <span class="hamburger"></span>
+    </button>
+</div>
 
     <main>
         <section class="controls">

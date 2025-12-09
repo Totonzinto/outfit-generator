@@ -1,51 +1,121 @@
-// Access the secured API key from the environment variables
-const PINTEREST_API_KEY = process.env.PINTEREST_API_KEY; 
-
-
-const PINTEREST_BASE_URL = 'https://api.pinterest.com/v5/search/pins'; 
+// This array acts as the "Database" of Pinterest images
+const localOutfits = [
+    {
+        id: 1,
+        name: "Casual Summer Look",
+        category: "summer",
+        image: "/images/summer1.jpg",
+        originalLink: "https://pinterest.com/pin/...",
+        
+    },
+    {
+        id: 2,
+        name: "Casual Summer Look",
+        category: "summer",
+        image: "/images/summer2.jpg",
+        originalLink: "https://pinterest.com/pin/...",
+    
+    },
+    {
+        id: 3,
+        name: "Casual Summer Look",
+        category: "summer",
+        image: "/images/summer3.jpg", 
+        originalLink: "https://pinterest.com/pin/...",
+    
+    },
+     {
+        id: 4,
+        name: "Cozy Winter Vibe",
+        category: "winter",
+        image: "/images/winter1.jpg",
+        originalLink: "https://pinterest.com/pin/...",
+        
+    },
+     {
+        id: 5,
+        name: "Cozy Winter Vibe",
+        category: "winter",
+        image: "/images/winter2.jpg", 
+        originalLink: "https://pinterest.com/pin/...",
+        
+    },
+     {
+        id: 6,
+        name: "Cozy Winter Vibe",
+        category: "winter",
+        image: "/images/winter3.jpg", 
+        originalLink: "https://pinterest.com/pin/...",
+         
+    },
+     {
+        id: 7,
+        name: "smart vintage look",
+        category: "vintage",
+        image: "/images/vintage1.jpg", 
+        originalLink: "https://pinterest.com/pin/...",
+        
+    },
+     {
+        id: 8,
+        name: "smart vintage look",
+        category: "vintage",
+        image: "/images/vintage2.jpg", 
+        originalLink: "https://pinterest.com/pin/...",
+       
+    },
+     {
+        id: 9,
+        name: "smart vintage look",
+        category: "vintage",
+        image: "/images/vintage3.jpg", 
+        originalLink: "https://pinterest.com/pin/...",
+         
+    },
+     {
+        id: 10,
+        name: "urban streetwear",
+        category: "streetwear",
+        image: "/images/streetwear1.jpg", 
+        originalLink: "https://pinterest.com/pin/...",
+       
+    },
+     {
+        id: 11,
+        name: "urban streetwear",
+        category: "streetwear",
+        image: "/images/sreetwear2.jpg",
+        originalLink: "https://pinterest.com/pin/...",
+       
+    },
+    
+    {
+        id: 12,
+        name: "urban streetwear",
+        category: "streetwear",
+        image: "/images/streetwear3.jpg",
+        originalLink: "https://pinterest.com/pin/...",
+        
+    },
+];
 
 async function searchPinterest(query) {
-    if (!PINTEREST_API_KEY) {
-        console.error("PINTEREST_API_KEY is missing from .env file!");
-       
-        return [
-            { id: 9001, name: "Mock Summer Look", image: "https://via.placeholder.com/400?text=Mock+Pinterest+Data", category: "summer" },
-        ];
-    }
-
-    try {
-        const url = `${PINTEREST_BASE_URL}?query=${encodeURIComponent(query)}&ad_account_id=...`;
-        
-    
-        const response = await fetch(url, {
-            headers: {
-                'Authorization': `Bearer ${PINTEREST_API_KEY}`, 
-                'Accept': 'application/json'
+    // Simulate a network delay (makes it feel like a real API)
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            if (!query || query === 'trending fashion') {
+                // If no specific search, return everything
+                resolve(localOutfits);
+            } else {
+                // Filter the local array based on the search keyword
+                const filtered = localOutfits.filter(item => 
+                    item.category.includes(query.toLowerCase()) || 
+                    item.name.toLowerCase().includes(query.toLowerCase())
+                );
+                resolve(filtered);
             }
-        });
-
-        if (!response.ok) {
-            throw new Error(`Pinterest API returned status ${response.status}`);
-        }
-
-        const data = await response.json();
-        
-      
-        const outfits = data.items.map(pin => ({
-            id: pin.id,
-            name: pin.title || 'Outfit Inspiration',
-            image: pin.media.images['236x']?.url || pin.media.images.original.url, // Choose the right image size
-            category: query, 
-            // Store the full pin data needed for the AI Breakdown step later
-            fullPinData: pin
-        }));
-        
-        return outfits;
-
-    } catch (error) {
-        console.error("Error fetching from Pinterest:", error);
-        return [];
-    }
+        }, 300); 
+    });
 }
 
 module.exports = {
